@@ -1,0 +1,41 @@
+@{
+  Layout = "_Layout";
+}
+
+@model BOTW.Models.Character;
+
+<h3>Character Details</h3>
+<hr />
+<h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
+
+@if(@Model.JoinEntries.Count == 0)
+{
+  <p>This Character has not visited any locations.</p>
+}
+else
+{
+  <h4>Locations this Character has visited:</h4>
+  <ul>
+  @foreach(var join in Model.JoinEntries)
+  {
+    <li>@join.Location.Name</li>
+  }
+  </ul>
+}
+
+@if(@Model.JoinEntries.Count == 0)
+{
+  <p>This Character is not wearing anything.</p>
+}
+else
+{
+  <h4>Styles this Character has:</h4>
+  <ul>
+  @foreach(var join in Model.JoinEntries)
+  {
+    <li>@join.Style.Name</li>
+  }
+  </ul>
+}
+
+<p>@Html.ActionLink("Back to Characters", "Index")</p>
