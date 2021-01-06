@@ -1,0 +1,20 @@
+@{
+  Layout = "_Layout";
+}
+
+@model BOTW.Models.Character
+
+<h2>Add a location</h2>
+
+<h4>Add a location that @Html.DisplayFor(model -> model.Name) has visited:</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.CharacterId)
+  @Html.Label("Select location")
+  @Html.DropDownList("LocationId")
+
+  <input type="submit" value="Save" />
+}
+
+<p>@Html.ActionLink("Back to Characters", "Index")</p>
