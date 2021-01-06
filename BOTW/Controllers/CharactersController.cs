@@ -37,14 +37,14 @@ namespace BOTW.Controllers
     public ActionResult Details(int id)
     {
       var thisCharacter = _db.Characters //this is called a stream. streams let you enumerate over all of the items in a collection. thisCharacter is a set until other things are called on it. but since you're calling these other things it is just the culmination of all of them at once.
-        .Include(character => character.Locations) // (character => character.JoinEntries) this is a lambda function, a nameless method, to the left of the equals is what the method takes, to the right of the equals is what the method does. item can be whatever (x, a, y.)
+        .Include(character => character.JoinEntries) // (character => character.JoinEntries) this is a lambda function, a nameless method, to the left of the equals is what the method takes, to the right of the equals is what the method does. item can be whatever (x, a, y.)
         // include function iterates over the dbCharacters set, character is an individual character in the set, this will call categories on every item in the database and load them into the individual item in the lambda object. 
         // this returns a collection of join entities, which is the collection of relationships between the item and the categores, as defined by the categoryItems table in the database 
         // a collection is an object that contains other typed objects, and offers some specific methods on how to access them. 
         // in this case, the join entities are CharacterLocationStyle Objects.
-        .ThenInclude(join => character.JoinEntries) //join should really be CharacterLocationStyle.
-        .Include(character => character.Styles)
-        .ThenInclude(join => join.JoinEntries)
+        .ThenInclude(join => join.Location) //join should really be CharacterLocationStyle.
+        .Include(character => character.JoinEntries)
+        .ThenInclude(join => join.Style)
         .FirstOrDefault(character => character.CharacterId == id); //specifies which particular character to run these commands on / filter list by
       return View(thisCharacter);
     }
