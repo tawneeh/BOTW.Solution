@@ -1,4 +1,4 @@
-# _Breath of the Wild_
+# _Breath of the Wild Database Project_
 
 #### _Many to Many Database Relationship Practice for Epicodus_ 
 #### _DATE 01.06.2021_
@@ -7,7 +7,7 @@
 
 ## Description
 
-This application...
+This application will allow users to create instances of Zelda Breath of the Wild Characters, Locations, and Styles and create many to many relationships betweens these instances. 
 
 ## Setup/Installation Requirements
 
@@ -19,7 +19,7 @@ Software Requirements
 * MySQL Workbench
 
 Open by Downloading or Cloning
-* Navigate to <>
+* Navigate to <https://github.com/tawneeh/BOTW.Solution.git>
 * Download this repository to your computer by clicking the green Code button and 'Download Zip'
 * Or clone the repository
 
@@ -42,12 +42,46 @@ Import Database using Entity Framework Core
 DB SQL Schema Snippet
 * Paste this Schema Create Statement into your SQL Workbench to create this database and its tables.
 ```
+CREATE DATABASE `botw` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+CREATE TABLE `__efmigrationshistory` (
+  `MigrationId` varchar(95) NOT NULL,
+  `ProductVersion` varchar(32) NOT NULL,
+  PRIMARY KEY (`MigrationId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `characterlocationstyle` (
+  `CharacterLocationStyleId` int NOT NULL AUTO_INCREMENT,
+  `CharacterId` int NOT NULL,
+  `LocationId` int DEFAULT NULL,
+  `StyleId` int DEFAULT NULL,
+  PRIMARY KEY (`CharacterLocationStyleId`),
+  KEY `IX_CharacterLocationStyle_CharacterId` (`CharacterId`),
+  KEY `IX_CharacterLocationStyle_LocationId` (`LocationId`),
+  KEY `IX_CharacterLocationStyle_StyleId` (`StyleId`),
+  CONSTRAINT `FK_CharacterLocationStyle_Characters_CharacterId` FOREIGN KEY (`CharacterId`) REFERENCES `characters` (`CharacterId`) ON DELETE CASCADE,
+  CONSTRAINT `FK_CharacterLocationStyle_Locations_LocationId` FOREIGN KEY (`LocationId`) REFERENCES `locations` (`LocationId`) ON DELETE RESTRICT,
+  CONSTRAINT `FK_CharacterLocationStyle_Styles_StyleId` FOREIGN KEY (`StyleId`) REFERENCES `styles` (`StyleId`) ON DELETE RESTRICT
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `characters` (
+  `CharacterId` int NOT NULL AUTO_INCREMENT,
+  `Name` longtext,
+  PRIMARY KEY (`CharacterId`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `locations` (
+  `LocationId` int NOT NULL AUTO_INCREMENT,
+  `Name` longtext,
+  PRIMARY KEY (`LocationId`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `styles` (
+  `StyleId` int NOT NULL AUTO_INCREMENT,
+  `Name` longtext,
+  PRIMARY KEY (`StyleId`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 ```
 
 SQL Database Design
 <center>
-<img style="width: 50% height: 50%" src="./ReadMeAssets/">
+<img style="width: 50% height: 50%" src="./ReadMeAssets/sqlSchemaPlan.png">
 </center>
 
 Launch this Application
