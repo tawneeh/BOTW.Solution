@@ -1,0 +1,19 @@
+@{
+  Layout = "_Layout";
+}
+
+@model BOTW.Models.Style;
+
+<h2>Glow up this Style</h2>
+
+<h4>Edit @Html.DisplayFor(model => model.Name)</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.StyleId)
+
+  @Html.LabelFor(model => model.Name)
+  @Html.EditorFor(model => model.Name)
+  <input type="submit" value="Save" />
+}
+<p>@Html.ActionLink("Back to Styles", "Index")</p>

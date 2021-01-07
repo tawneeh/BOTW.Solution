@@ -1,0 +1,23 @@
+@{
+  Layout = "_Layout";
+}
+
+@using BOTW.Models;
+@using Microsoft.EntityFrameworkCore;
+@using Microsoft.AspNetCore.Mvc.Rendering;
+@model List<BOTW.Models.Location>;
+@using BOTW.Controllers;
+
+<h1>Current Locations</h1>
+
+@if (@Model.Count == 0)
+{
+  <h3>There are no Locations currently</h3>
+}
+
+@foreach (Location location in Model)
+{
+  <li>@Html.ActionLink($"{location.Name}", "Details", new { id = location.LocationId })</li>
+}
+
+<p>@Html.ActionLink("Add a new Location", "Create")</p>

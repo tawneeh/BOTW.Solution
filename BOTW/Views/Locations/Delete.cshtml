@@ -1,0 +1,15 @@
+@{
+  Layout = "_Layout";
+}
+
+@model BOTW.Models.Location;
+
+<h2>Are you sure you want to delete this location?</h2>
+
+@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)
+@using (Html.BeginForm())
+{
+    @Html.Hidden("joinId", @join.CharacterLocationStyleId)
+    <input type="submit" value="Delete" />
+}
+@Html.ActionLink("Back to Locations", "Index")

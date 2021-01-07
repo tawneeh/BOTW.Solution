@@ -1,0 +1,30 @@
+@{
+  Layout = "_Layout";
+}
+
+@model BOTW.Models.Location;
+
+<h3>Location Details</h3>
+<hr />
+<h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
+
+@if(@Model.JoinEntries.Count == 0)
+{
+  <p>No Characters Live Here.</p>
+}
+else
+{
+  <h4>These Characters Live Here:</h4>
+  <ul>
+  @foreach(var join in Model.JoinEntries)
+  {
+    <li>@join.Character.Name</li>
+  }
+  </ul>
+}
+
+<table>
+  <li>@Html.ActionLink("Back to Locations", "Index")</li>
+  <li>@Html.ActionLink("Edit Location", "Edit", new { id = Model.LocationId })</li>
+  <li>@Html.ActionLink("Delete Location", "Delete", new { id = Model.LocationId })</li>
+</table>

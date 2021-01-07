@@ -10,7 +10,7 @@
 
 @if(@Model.JoinEntries.Count == 0)
 {
-  <p>This Character has not visited any locations.</p>
+  <p>This Character has not visited any locations and has no style.</p>
 }
 else
 {
@@ -18,22 +18,30 @@ else
   <ul>
   @foreach(var join in Model.JoinEntries)
   {
-    <li>@join.Location.Name</li>
+    if (join.Location != null)
+    {
+      <li>@join.Location.Name</li>
+      @* @using (Html.BeginForm("DeleteJoin", "Characters"))
+      {
+        @Html.Hidden("joinId", @join.CharacterLocationStyleId)
+        <input type="submit" value="Delete" />
+      } *@
+    }
   }
   </ul>
-}
-
-@if(@Model.JoinEntries.Count == 0)
-{
-  <p>This Character is not wearing anything.</p>
-}
-else
-{
   <h4>Styles this Character has:</h4>
   <ul>
   @foreach(var join in Model.JoinEntries)
   {
-    <li>@join.Style.Name</li>
+    if (join.Style != null)
+    {
+      <li>@join.Style.Name</li>
+      @* @using (Html.BeginForm("DeleteJoin", "Characters"))
+      {
+        @Html.Hidden("joinId", @join.CharacterLocationStyleId)
+        <input type="submit" value="Delete" />
+      } *@
+    }
   }
   </ul>
 }
