@@ -2,7 +2,6 @@
   Layout = "_Layout";
 }
 
-@using BOTW.Models;
 @model BOTW.Models.Style;
 
 <h3>Style Details</h3>
@@ -11,7 +10,7 @@
 
 @if(@Model.JoinEntries.Count == 0)
 {
-  <p>No one it rocking this style.....yet</p>
+  <p>No one is rocking this style.....yet</p>
 }
 else
 {
@@ -31,5 +30,4 @@ else
   {
   <li>@Html.ActionLink("Delete Style", "Delete", new { id = Model.StyleId })</li>
   }
-  <!-- does this work for delete? -->
 </table>
