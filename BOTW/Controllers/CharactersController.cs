@@ -66,7 +66,7 @@ namespace BOTW.Controllers
     public ActionResult AddStyle(int id)
     {
       var thisCharacter = _db.Characters.FirstOrDefault(CharactersController => CharactersController.CharacterId == id);
-      ViewBag.StyleId = new SelectList(_db.Styles, "StyleId", "Type");
+      ViewBag.StyleId = new SelectList(_db.Styles, "StyleId", "Name");
       return View(thisCharacter);
     }
 
@@ -109,6 +109,15 @@ namespace BOTW.Controllers
     {
       var thisCharacter = _db.Characters.FirstOrDefault(character => character.CharacterId == id);
       _db.Characters.Remove(thisCharacter);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+
+    [HttpPost]
+    public ActionResult DeleteJoin(int joinId)
+    {
+      var joinEntry = _db.CharacterLocationStyle.FirstOrDefault(entry => entry.CharacterLocationStyleId == joinId);
+      _db.CharacterLocationStyle.Remove(joinEntry);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
