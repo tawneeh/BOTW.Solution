@@ -26,5 +26,9 @@ else
 <table>
   <li>@Html.ActionLink("Back to Locations", "Index")</li>
   <li>@Html.ActionLink("Edit Location", "Edit", new { id = Model.LocationId })</li>
+  @if(@Model.JoinEntries.Count == 0)
+  {
   <li>@Html.ActionLink("Delete Location", "Delete", new { id = Model.LocationId })</li>
+  }
+  <!-- does this work for delete? -->
 </table>

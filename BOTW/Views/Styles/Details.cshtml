@@ -27,5 +27,9 @@ else
 <table>
   <li>@Html.ActionLink("Back to Styles", "Index")</li>
   <li>@Html.ActionLink("Edit Style", "Edit", new { id = Model.StyleId })</li>
+  @if(@Model.JoinEntries.Count == 0)
+  {
   <li>@Html.ActionLink("Delete Style", "Delete", new { id = Model.StyleId })</li>
+  }
+  <!-- does this work for delete? -->
 </table>

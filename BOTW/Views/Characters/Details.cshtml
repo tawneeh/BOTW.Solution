@@ -21,11 +21,11 @@ else
     if (join.Location != null)
     {
       <li>@join.Location.Name</li>
-      @* @using (Html.BeginForm("DeleteJoin", "Characters"))
+      @using (Html.BeginForm("DeleteJoin", "Characters"))
       {
         @Html.Hidden("joinId", @join.CharacterLocationStyleId)
         <input type="submit" value="Delete" />
-      } *@
+      }
     }
   }
   </ul>
@@ -36,11 +36,11 @@ else
     if (join.Style != null)
     {
       <li>@join.Style.Name</li>
-      @* @using (Html.BeginForm("DeleteJoin", "Characters"))
+      @using (Html.BeginForm("DeleteJoin", "Characters"))
       {
         @Html.Hidden("joinId", @join.CharacterLocationStyleId)
         <input type="submit" value="Delete" />
-      } *@
+      }
     }
   }
   </ul>
