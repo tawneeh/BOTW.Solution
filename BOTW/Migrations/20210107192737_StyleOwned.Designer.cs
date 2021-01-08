@@ -3,14 +3,16 @@ using System;
 using BOTW.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BOTW.Migrations
 {
     [DbContext(typeof(BOTWContext))]
-    partial class BOTWContextModelSnapshot : ModelSnapshot
+    [Migration("20210107192737_StyleOwned")]
+    partial class StyleOwned
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
