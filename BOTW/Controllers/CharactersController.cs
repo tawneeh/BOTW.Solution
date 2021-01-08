@@ -52,34 +52,42 @@ namespace BOTW.Controllers
     public ActionResult Edit(int id)
     {
       var thisCharacter = _db.Characters.FirstOrDefault(character => character.CharacterId == id);
+      ViewBag.Styles = _db.Styles.ToList();
       return View(thisCharacter);
     }
 
     [HttpPost]
-    public ActionResult Edit(Character Character)
+    public ActionResult Edit(Character Character, List<int> styles)
     {
+      if (styles.Count != 0)
+      {
+        foreach(int style in styles)
+        {
+        _db.CharacterLocationStyle.Add(new CharacterLocationStyle() { StyleId = style, CharacterId = Character.CharacterId });
+        }
+      }
       _db.Entry(Character).State = EntityState.Modified;
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
 
-    public ActionResult AddStyle(int id)
-    {
-      var thisCharacter = _db.Characters.FirstOrDefault(CharactersController => CharactersController.CharacterId == id);
-      ViewBag.StyleId = new SelectList(_db.Styles, "StyleId", "Name");
-      return View(thisCharacter);
-    }
+    // public ActionResult AddStyle(int id)
+    // {
+    //   var thisCharacter = _db.Characters.FirstOrDefault(CharactersController => CharactersController.CharacterId == id);
+    //   ViewBag.StyleId = new SelectList(_db.Styles, "StyleId", "Name");
+    //   return View(thisCharacter);
+    // }
 
-    [HttpPost]
-    public ActionResult AddStyle(Character character, int StyleId)
-    {
-      if (StyleId != 0)
-      {
-        _db.CharacterLocationStyle.Add(new CharacterLocationStyle() { StyleId = StyleId, CharacterId = character.CharacterId });
-      }
-      _db.SaveChanges();
-      return RedirectToAction("Index");
-    }
+    // [HttpPost]
+    // public ActionResult AddStyle(Character character, int StyleId)
+    // {
+    //   if (StyleId != 0)
+    //   {
+    //     _db.CharacterLocationStyle.Add(new CharacterLocationStyle() { StyleId = StyleId, CharacterId = character.CharacterId });
+    //   }
+    //   _db.SaveChanges();
+    //   return RedirectToAction("Index");
+    // }
     public ActionResult AddLocation(int id)
     {
       var thisCharacter = _db.Characters.FirstOrDefault(CharactersController => CharactersController.CharacterId == id);
