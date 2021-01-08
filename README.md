@@ -45,6 +45,7 @@ DB SQL Schema Snippet
 * Paste this Schema Create Statement into your SQL Workbench to create this database and its tables.
 ```
 CREATE DATABASE `botw` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE botw;
 CREATE TABLE `__efmigrationshistory` (
   `MigrationId` varchar(95) NOT NULL,
   `ProductVersion` varchar(32) NOT NULL,
@@ -62,28 +63,29 @@ CREATE TABLE `characterlocationstyle` (
   CONSTRAINT `FK_CharacterLocationStyle_Characters_CharacterId` FOREIGN KEY (`CharacterId`) REFERENCES `characters` (`CharacterId`) ON DELETE CASCADE,
   CONSTRAINT `FK_CharacterLocationStyle_Locations_LocationId` FOREIGN KEY (`LocationId`) REFERENCES `locations` (`LocationId`) ON DELETE RESTRICT,
   CONSTRAINT `FK_CharacterLocationStyle_Styles_StyleId` FOREIGN KEY (`StyleId`) REFERENCES `styles` (`StyleId`) ON DELETE RESTRICT
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=93 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 CREATE TABLE `characters` (
   `CharacterId` int NOT NULL AUTO_INCREMENT,
   `Name` longtext,
   PRIMARY KEY (`CharacterId`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 CREATE TABLE `locations` (
   `LocationId` int NOT NULL AUTO_INCREMENT,
   `Name` longtext,
   PRIMARY KEY (`LocationId`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 CREATE TABLE `styles` (
   `StyleId` int NOT NULL AUTO_INCREMENT,
   `Name` longtext,
+  `Owned` bit(1) NOT NULL DEFAULT b'0',
   PRIMARY KEY (`StyleId`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 ```
 
 SQL Database Design
 <center>
-<img style="width: 50% height: 50%" src="./ReadMeAssets/sqlSchemaPlan.png">
+<img style="width: 20% height: 20%" src="./ReadMeAssets/sqlSchemaPlan.png">
 </center>
 
 Launch this Application
