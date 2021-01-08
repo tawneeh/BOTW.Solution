@@ -2,7 +2,7 @@
   Layout = "_Layout";
 }
 
-@model BOTW.Models.Character
+@model BOTW.Models.Character;
 
 <h2>Edit Current Character</h2>
 
@@ -14,6 +14,28 @@
 
   @Html.LabelFor(model => model.Name)
   @Html.EditorFor(model => model.Name)
+
+  {
+    int cnt = 0;
+
+    <p>Availible Styles:</p>
+    foreach (var style in ViewBag.Styles)
+    {
+      if (cnt++ % 3 == 0)
+      {
+        @:</tr><tr>
+      }
+      @:<td>
+        <input type="checkbox"
+            name="styles"
+            value="@style.StyleId"
+            @(Html.Raw(style.Owned ? "checked=\"checked\"" : "")) />
+            @style.Name
+      @:</td>
+    }
+    @:</tr>
+  }
   <input type="submit" value="Save" />
 }
+
 <p>@Html.ActionLink("Back to Characters", "Index")</p>

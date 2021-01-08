@@ -26,7 +26,7 @@ else
         @Html.Hidden("joinId", @join.CharacterLocationStyleId)
         <input type="submit" value="Delete" />
       }
-    }
+    } 
   }
   </ul>
   <h4>Styles this Character has:</h4>
@@ -41,7 +41,7 @@ else
         @Html.Hidden("joinId", @join.CharacterLocationStyleId)
         <input type="submit" value="Delete" />
       }
-    }
+    } 
   }
   </ul>
 }
@@ -49,5 +49,4 @@ else
 <p>@Html.ActionLink("Back to Characters", "Index")</p>
 <p>@Html.ActionLink("Edit Character", "Edit", new { id = Model.CharacterId })</p>
 <p>@Html.ActionLink("Add a Location", "AddLocation", new { id = Model.CharacterId })</p>
-<p>@Html.ActionLink("Add some style", "AddStyle", new { id = Model.CharacterId })</p>
 <p>@Html.ActionLink("Delete Character", "Delete", new { id = Model.CharacterId })</p>
