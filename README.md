@@ -9,6 +9,8 @@
 
 This application will allow users to create instances of Zelda Breath of the Wild Characters, Locations, and Styles and create many to many relationships betweens these instances. 
 
+![](ReadMeAssets/recording.gif)
+
 ## Setup/Installation Requirements
 
 Software Requirements
@@ -113,6 +115,3 @@ This application has no known bugs.
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Copyright (c) 2020 **_Tawnee Harris, Patrick Osten and Jerrod Styrk_**
-
-Co-authored-by: Jerrod Styrk <jstyrk@citadel.edu>
-Co-authored-by: Patrick Osten <posten.coding@gmail.com>
